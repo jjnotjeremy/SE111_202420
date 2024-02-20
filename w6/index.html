@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="JJ">
+    <meta name="description" content="javascript week 6 pay calculator">
+    <title>JavaScript Pay Calc</title>
+</head>
+<body>
+    <h1>Welcome to the Pay Calculator!</h1>
+    <script>
+        var uncleSamsShare = 0.2 //setting tax rate
+
+        //collecting input from user and logging it in the console
+        var hourlyPay = Number(prompt("Please enter your hourly pay rate: $"))
+        console.log("Hourly Pay Rate: $" + hourlyPay.toFixed(2))
+        var hoursWorked = Number(prompt("Please enter the amount of hours you worked this week: "))
+        console.log("Hourly Worked:" + hoursWorked.toFixed(2))
+
+        //doing some math because who doesnt love some math?
+        var grossPay = hourlyPay * hoursWorked
+        var taxCut = uncleSamsShare * grossPay
+        var netPay = grossPay - taxCut
+
+        //outputting info to the user
+        alert("Gross Pay: $" + grossPay.toFixed(2) + "\nUncle Sam's Share: $" + taxCut.toFixed(2) + "\nNet Pay: $" + netPay.toFixed(2))
+    </script>
+    <h2>Thank you for using the program.</h2>
+</body>
+</html>
