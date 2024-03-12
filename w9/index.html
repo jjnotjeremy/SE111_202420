@@ -54,6 +54,15 @@
         const peopleEl = document.querySelector("#people")
 
         for (const [index, person] of people.entries()) {
+            const li = document.createElement("li")
+
+            li.setAttribute("id", String(index))
+            li.setAttribute("data-first", person.first)
+            li.setAttribute("data-last", person.last)
+            li.setAttribute("data-credit", person.credit)
+
+            li.classList.add("item")
+
             for (const [key, value] of Object.entries(person)) {
                 const tempDiv = document.createElement("tempDiv")
                 tempDiv.setAttribute(`data-${key}`, value)
