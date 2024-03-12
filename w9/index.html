@@ -49,21 +49,24 @@
             { first: "Marion", last: "Cobretti", credit: "Cobra" }
         ]
         const peopleEl = document.querySelector("#people")
-        for (const [key, value] of Object.entries(person)) {
-            const p = document.createElement("p")
-            p.setAttribute(`data-${key}`, value)
-            p.classList.add("sans-serif")
+        for (const [index, person] of people.entries()) {
+            for (const [key, value] of Object.entries(person)) {
+                const p = document.createElement("p")
+                p.setAttribute(`data-${key}`, value)
+                p.classList.add("sans-serif")
 
-            const label = document.createElement("span")
-            const labelText = document.createTextNode(`${key.toUpperCase()}: `)
-            label.appendChild(labelText)
-            label.classList.add("monospace")
+                const label = document.createElement("span")
+                const labelText = document.createTextNode(`${key.toUpperCase()}: `)
+                label.appendChild(labelText)
+                label.classList.add("monospace")
 
-            const pText = document.createTextNode(value);
+                const pText = document.createTextNode(value);
 
-            p.appendChild(label)
-            p.appendChild(pText)
-            li.appendChild(p)
+                p.appendChild(label)
+                p.appendChild(pText)
+                li.appendChild(p)
+            }
+            peopleEl.appendChild(li)
         }
     </script>
 </body>
