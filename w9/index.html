@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="JJ">
+    <meta name="description" content="week 9 lab">
+    <title>Week 9 | Creating Elements Lab</title>
+    <style type="text/css">
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            padding: 4rem;
+        }
+        ul {
+            list-style: none;
+            border: 1px solid black;
+        }
+        .item {
+            border-bottom: 1px solid black;
+            padding: 0.75rem 0.5rem;
+            &:last-of-type {
+                border-bottom: none;
+            }
+        }
+        .monospace {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .sans-serif {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <ul id="people"></ul>
+    <script type="text/javascript">
+        // Use this Array of objects to complete the assignment.
+        var people = [
+            { first: "Jason", last: "Vorhees", credit: "Friday the 13th" },
+            { first: "Freddy", last: "Krueger", credit: "A Nightmare on Elm Street" },
+            { first: "Roger", last: "Rabbit", credit: "Who Framed Roger Rabbit" },
+            { first: "Kevin", last: "McCallister", credit: "Home Alone" },
+            { first: "Godzilla", last: "King of The Monsters", credit: "Godzilla" },
+            { first: "Buzz", last: "Lightyear", credit: "Toy Story" },
+            { first: "Marion", last: "Cobretti", credit: "Cobra" }
+        ]
+        const peopleEl = document.querySelector("#people")
+        for (const [index, person] of people.entries()) {
+            const li = document.createElement("li")
+            li.setAttribute("id", String(index))
+            li.setAttribute("data-first", person.first)
+            li.setAttribute("data-last", person.last)
+            li.setAttribute("data-credit", person.credit)
+            li.classList.add("item")
+
+            for (const [key, value] of Object.entries(person)) {
+                const p = document.createElement("p")
+                p.setAttribute(`data-${key}`, value)
+                p.classList.add("sans-serif")
+
+                const label = document.createElement("span")
+                const labelText = document.createTextNode(`${key.toUpperCase()}: `)
+                label.appendChild(labelText)
+                label.classList.add("monospace")
+
+                const pText = document.createTextNode(value);
+
+                p.appendChild(label)
+                p.appendChild(pText)
+                li.appendChild(p)
+            }
+            peopleEl.appendChild(li)
+        }
+    </script>
+</body>
+</html>
