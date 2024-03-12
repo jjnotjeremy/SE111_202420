@@ -36,53 +36,51 @@
 </head>
 
 <body>
-</body>
+    <ul id="people"></ul>
+    <script type="text/javascript">
+        //Use this Array of objects to complete the assignment.
+        var people = [
+                { first: "Jason", last: "Vorhees", credit: "Friday the 13th" },
+                { first: "Freddy", last: "Krueger", credit: "A Nightmare on Elm Street" },
+                { first: "Roger", last: "Rabbit", credit: "Who Framed Roger Rabbit" },
+                { first: "Kevin", last: "McCallister", credit: "Home Alone" },
+                { first: "Godzilla", last: "King of The Monsters", credit: "Godzilla" },
+                { first: "Buzz", last: "Lightyear", credit: "Toy Story" },
+                { first: "Marion", last: "Cobretti", credit: "Cobra" }
+            ]
 
-<script type="text/javascript">
-	//Use this Array of objects to complete the assignment.
-    var people = [
-            { first: "Jason", last: "Vorhees", credit: "Friday the 13th" },
-            { first: "Freddy", last: "Krueger", credit: "A Nightmare on Elm Street" },
-            { first: "Roger", last: "Rabbit", credit: "Who Framed Roger Rabbit" },
-            { first: "Kevin", last: "McCallister", credit: "Home Alone" },
-            { first: "Godzilla", last: "King of The Monsters", credit: "Godzilla" },
-            { first: "Buzz", last: "Lightyear", credit: "Toy Story" },
-            { first: "Marion", last: "Cobretti", credit: "Cobra" }
-        ]
+            /** @type {HTMLUListElement} */
+            const peopleEl = document.querySelector("#people")
 
-        /** @type {HTMLUListElement} */
-        const peopleEl = document.querySelector("#people")
+            for (const [index, person] of people.entries()) {
+                const li = document.createElement("li")
 
-        for (const [index, person] of people.entries()) {
-            const li = document.createElement("li")
+                li.setAttribute("id", String(index))
+                li.setAttribute("data-first", person.first)
+                li.setAttribute("data-last", person.last)
+                li.setAttribute("data-credit", person.credit)
 
-            li.setAttribute("id", String(index))
-            li.setAttribute("data-first", person.first)
-            li.setAttribute("data-last", person.last)
-            li.setAttribute("data-credit", person.credit)
+                li.classList.add("item")
 
-            li.classList.add("item")
+                for (const [key, value] of Object.entries(person)) {
+                    const tempDiv = document.createElement("tempDiv")
+                    tempDiv.setAttribute(`data-${key}`, value)
+                    tempDiv.classList.add("sans-serif")
 
-            for (const [key, value] of Object.entries(person)) {
-                const tempDiv = document.createElement("tempDiv")
-                tempDiv.setAttribute(`data-${key}`, value)
-                tempDiv.classList.add("sans-serif")
+                    const label = document.createElement("span")
+                    const labelText = document.createTextNode(`${key.toUpperCase()}: `)
+                    label.appendChild(labelText)
+                    label.classList.add("monospace")
 
-                const label = document.createElement("span")
-                const labelText = document.createTextNode(`${key.toUpperCase()}: `)
-                label.appendChild(labelText)
-                label.classList.add("monospace")
+                    const pText = document.createTextNode(value);
 
-                const pText = document.createTextNode(value);
+                    tempDiv.appendChild(label)
+                    tempDiv.appendChild(pText)
+                    li.appendChild(p)
+                }
 
-                tempDiv.appendChild(label)
-                tempDiv.appendChild(pText)
-                li.appendChild(p)
+                peopleEl.appendChild(li)
             }
-
-            peopleEl.appendChild(li)
-        }
-
     </script>
 </body>
 
