@@ -50,34 +50,31 @@
             { first: "Marion", last: "Cobretti", credit: "Cobra" }
         ]
 
-        const peopleEl = document.querySelector("#people")
+		var bodyElement = document.querySelector("body")
 
-        for (const [index, person] of people.entries()) {
-            const li = document.createElement("li")
+		for (let i = 0; i < people.length; i++) {
+			var person = people[i]
 
-            li.classList.add("item")
+			var tempDiv = document.createElement("div")
+			tempDiv.setAttribute("id", String(i))
+			tempDiv.setAttribute("class", "border")
+			tempDiv.setAttribute("data-first", person.first)
+			tempDiv.setAttribute("data-last", person.last)
+			tempDiv.setAttribute("data-credit", person.credit)
 
-            for (const [key, value] of Object.entries(person)) {
-                const p = document.createElement("p")
-                p.setAttribute(`data-${key}`, value)
-                p.classList.add("sans-serif")
+			var p = document.createElement("p")
+			var text
+			text = document.createTextNode(`FIRST: ${person.first}`)
+			p.appendChild(text)
+			text = document.createTextNode(`\nLAST: ${person.last}`)
+			p.appendChild(text)
+			text = document.createTextNode(`\nCREDIT: ${person.credit}`)
+			p.appendChild(text)
 
-                const label = document.createElement("span")
-                const labelText = document.createTextNode(`${key.toUpperCase()}: `)
-                label.appendChild(labelText)
-                label.classList.add("monospace")
-
-                const pText = document.createTextNode(value);
-
-                p.appendChild(label)
-                p.appendChild(pText)
-                li.appendChild(p)
-            }
-
-            peopleEl.appendChild(li)
-        }
-
-    </script>
+			tempDiv.appendChild(p)
+			bodyElement.appendChild(tempDiv)
+		}
+	</script>
 </body>
 
 </html>
