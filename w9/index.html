@@ -60,12 +60,13 @@
             li.appendChild(firstNameDiv);
 
             const lastNameDiv = document.createElement("div");
+            lastNameDiv = textContent = person.last;
             li.appendChild(lastNameDiv);
 
             const creditDiv = document.createElement("div");
             creditDiv.textContent = person.credit;
             li.appendChild(creditDiv);
-            
+
             peopleEl.appendChild(li);
         }
     </script>
