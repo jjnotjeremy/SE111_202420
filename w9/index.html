@@ -50,18 +50,28 @@
 		{first:"Marion", last:"Cobretti", credit:"Cobra" }
 	]
 
-	for(let i = 0; i < people.length; i++) {
-        var tempDiv = document.createElement('tempDiv')
-        tempDiv.setAttribute("id", String(i))
-        tempDiv.setAttribute('class', 'border')
-        for(key in people[i]) {
-            var p = document.createElement('p')
-            var text = document.createTextNode(people[i][key])
-            p.appendChild(text)
+
+	for(let i = 0; i < people.length; i++)
+	{
+
+		var tempDiv = document.createElement(`tempDiv`)
+
+		tempDiv.setAttribute("id", String(i))
+
+		tempDiv.setAttribute(`class`, `border`)
+
+		for(key in people[i])
+		{
+			var p = document.createElement(`p`) 
+
+			var text = document.createTextNode(people[i][key])
+
+			p.appendChild(text)
             tempDiv.appendChild(p)
-        }
-        body.appendChild(tempDiv)
-    }
+		}
+		body.appendChild(tempDiv)
+	}
+	
 </script>
 
 </html>
