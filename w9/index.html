@@ -49,8 +49,8 @@
 		{first:"Buzz", last:"Lightyear", credit:"Toy Story" },
 		{first:"Marion", last:"Cobretti", credit:"Cobra" }
 	]
-    
-    for (const [index, person] of people.entries()) {
+
+	for(let i = 0; i < people.length; i++) {
         var tempDiv = document.createElement('tempDiv')
         tempDiv.setAttribute("id", String(i))
         tempDiv.setAttribute('class', 'border')
