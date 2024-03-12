@@ -60,18 +60,27 @@
 			tempDiv.setAttribute("data-last", person.last)
 			tempDiv.setAttribute("data-credit", person.credit)
 
-			var p = document.createElement("p")
-			var text
-			text = document.createTextNode(`FIRST: ${person.first}`)
-			p.appendChild(text)
-			text = document.createTextNode(`\nLAST: ${person.last}`)
-			p.appendChild(text)
-			text = document.createTextNode(`\nCREDIT: ${person.credit}`)
-			p.appendChild(text)
+            li.classList.add("item")
 
-			tempDiv.appendChild(p)
-			bodyElement.appendChild(tempDiv)
-		}
+            for (const [key, value] of Object.entries(person)) {
+                const p = document.createElement("p")
+                p.setAttribute(`data-${key}`, value)
+                p.classList.add("sans-serif")
+
+                const label = document.createElement("span")
+                const labelText = document.createTextNode(`${key.toUpperCase()}: `)
+                label.appendChild(labelText)
+                label.classList.add("monospace")
+
+                const pText = document.createTextNode(value);
+
+                p.appendChild(label)
+                p.appendChild(pText)
+                li.appendChild(p)
+            }
+
+            peopleEl.appendChild(li)
+        }
 	</script>
 </body>
 
