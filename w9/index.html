@@ -49,31 +49,25 @@
             { first: "Buzz", last: "Lightyear", credit: "Toy Story" },
             { first: "Marion", last: "Cobretti", credit: "Cobra" }
         ]
+
         const peopleEl = document.querySelector("#people")
 
         for (const [index, person] of people.entries()) {
-            const li = document.createElement("li")
+            const li = document.createElement("li");
 
-            li.setAttribute("id", String(index))
-            li.setAttribute("data-first", person.first)
-            li.setAttribute("data-last", person.last)
-            li.setAttribute("data-credit", person.credit)
+            const firstNameDiv = document.createElement("div");
+            firstNameDiv.textContent = person.first;
+            li.appendChild(firstNameDiv);
 
-            li.classList.add("item")
+            const lastNameDiv = document.createElement("div");
+            li.appendChild(lastNameDiv);
 
-            for (const [key, value] of Object.entries(person)) {
-                const tempDiv = document.createElement("tempDiv")
-                tempDiv.setAttribute(`data-${key}`, value)
-                tempDiv.classList.add("sans-serif")
-                const tempDivText = document.createTextNode(value);
-
-                tempDiv.appendChild(tempDivText)
-                li.appendChild(tempDiv)
-            }
-
-            peopleEl.appendChild(li)
+            const creditDiv = document.createElement("div");
+            creditDiv.textContent = person.credit;
+            li.appendChild(creditDiv);
+            
+            peopleEl.appendChild(li);
         }
-
     </script>
 </body>
 
