@@ -36,52 +36,34 @@
 </head>
 
 <body>
-	<script type="text/javascript">
-		//Use this Array of objects to complete the assignment.
-		var people = [
-			{ first: "Jason", last: "Vorhees", credit: "Friday the 13th" },
-			{ first: "Freddy", last: "Krueger", credit: "A Nightmare on Elm Street" },
-			{ first: "Roger", last: "Rabbit", credit: "Who Framed Roger Rabbit" },
-			{ first: "Kevin", last: "McCallister", credit: "Home Alone" },
-			{ first: "Godzilla", last: "King of The Monsters", credit: "Godzilla" },
-			{ first: "Buzz", last: "Lightyear", credit: "Toy Story" },
-			{ first: "Marion", last: "Cobretti", credit: "Cobra" }
-		]
-
-		var bodyElement = document.querySelector("body")
-
-		for (let i = 0; i < people.length; i++) {
-			var person = people[i]
-
-			var tempDiv = document.createElement("div")
-			tempDiv.setAttribute("id", String(i))
-			tempDiv.setAttribute("class", "border")
-			tempDiv.setAttribute("data-first", person.first)
-			tempDiv.setAttribute("data-last", person.last)
-			tempDiv.setAttribute("data-credit", person.credit)
-
-            li.classList.add("item")
-
-            for (const [key, value] of Object.entries(person)) {
-                const p = document.createElement("p")
-                p.setAttribute(`data-${key}`, value)
-                p.classList.add("sans-serif")
-
-                const label = document.createElement("span")
-                const labelText = document.createTextNode(`${key.toUpperCase()}: `)
-                label.appendChild(labelText)
-                label.classList.add("monospace")
-
-                const pText = document.createTextNode(value);
-
-                p.appendChild(label)
-                p.appendChild(pText)
-                li.appendChild(p)
-            }
-
-            peopleEl.appendChild(li)
-        }
-	</script>
 </body>
+
+<script type="text/javascript">
+	//Use this Array of objects to complete the assignment.
+	var people =[
+		{first:"Jason", last:"Vorhees", credit:"Friday the 13th"},
+		{first:"Freddy", last:"Krueger", credit:"A Nightmare on Elm Street" },
+		{first:"Roger", last:"Rabbit", credit:"Who Framed Roger Rabbit" },
+		{first:"Kevin", last:"McCallister", credit:"Home Alone" },
+		{first:"Godzilla", last:"King of The Monsters", credit:"Godzilla" },
+		{first:"Buzz", last:"Lightyear", credit:"Toy Story" },
+		{first:"Marion", last:"Cobretti", credit:"Cobra" }
+	]
+	
+    const peopleEl = document.querySelector("#people")
+
+    for (const [index, person] of people.entries()) {
+        var tempDiv = document.createElement('tempDiv')
+        tempDiv.setAttribute("id", String(i))
+        tempDiv.setAttribute('class', 'border')
+        for(key in people[i]) {
+            var p = document.createElement('p')
+            var text = document.createTextNode(people[i][key])
+            p.appendChild(text)
+            tempDiv.appendChild(p)
+        }
+        body.appendChild(tempDiv)
+    }
+</script>
 
 </html>
